@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writers Round | Casa Concert - Nashville Songwriter Experiences</title>
+  <meta name="description" content="Experience a Nashville writers round in your own home. Multiple songwriters take turns sharing their songs and stories in an intimate, interactive format.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="container">
+      <div class="nav-left"><a href="index.html" class="nav-logo"><img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert"></a><a href="tel:4063800096" class="nav-phone">406-380-0096</a></div>
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="about.html">About</a>
+          <ul class="nav-dropdown">
+            <li><a href="news.html">News</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="experiences.html">What To Expect</a>
+          <ul class="nav-dropdown">
+            <li><a href="featured-songwriters.html">Featured Songwriters</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="corporate.html">Experiences</a>
+          <ul class="nav-dropdown">
+            <li><a href="home-shows.html">Home Shows</a></li>
+            <li><a href="songwriter-showcase.html">Songwriter Showcase</a></li>
+            <li><a href="writers-round.html">Writers Round</a></li>
+            <li><a href="corporate.html">Corporate Events</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="hero page-hero">
+    <img class="hero-image-bg" src="assets/images/services-1.jpg" alt="Writers round">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Writers Round<br>Nashville</h1>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section-white">
+    <div class="container">
+      <div class="split">
+        <div class="split-content">
+          <h2>Your Unique Venue Atmosphere</h2>
+          <p>
+            When you step into our exclusive songwriter sessions, you're not just attending a performance. You're experiencing the heart and soul of Nashville's music scene in the most intimate and authentic way possible. Picture a private setting, reminiscent of iconic spots like the Bluebird Cafe, but with a personal twist that makes each session truly unique.
+          </p>
+          <p>
+            At Casa Concert, we bring the charm and authenticity of Nashville's legendary songwriters' rounds right into your living room. A writers' round is a one-of-a-kind live music experience where talented songwriters perform their original works and share the deeply personal stories behind the songs.
+          </p>
+          <a href="contact.html" class="btn btn-primary">Book a Writers Round</a>
+        </div>
+        <div class="split-image">
+          <img src="assets/images/casa-concert-screengrab.jpg" alt="Writers round format">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cyan-band">
+    <div class="container">
+      <h2>Discover the Intimacy &amp; Magic</h2>
+      <p>Imagine a cozy evening with friends, surrounded by the intimate sounds of acoustic music, as you hear not only the melodies but the heartfelt inspirations and journeys that brought those songs to life. Casa Concert curates these special gatherings by partnering with acclaimed songwriters who bring authenticity, soul, and a touch of magic to your space.</p>
+      <a href="contact.html" class="btn btn-white" style="margin-top: 16px;">Start Planning</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bg" style="background-image: url('assets/images/about-img-1.jpg'); padding: 48px 0 24px;">
+      <div class="footer-logo"><img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert"></div>
+      <ul class="footer-nav">
+        <li><a href="about.html">About</a></li>
+        <li><a href="experiences.html">What To Expect</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/people/Casa-Concert/61565594474633/" target="_blank" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/casaconcert/" target="_blank" aria-label="Instagram">&#9901;</a>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Casa Concert. All Rights Reserved.</p></div>
+    </div>
+    <div class="footer-top-band"></div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

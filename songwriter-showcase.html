@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Songwriter Showcase | Casa Concert - Nashville Experiences</title>
+  <meta name="description" content="Experience a Nashville songwriter showcase in your living room. Two professional songwriters share original songs, stories, and insider insights about the music industry.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="container">
+      <div class="nav-left"><a href="index.html" class="nav-logo"><img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert"></a><a href="tel:4063800096" class="nav-phone">406-380-0096</a></div>
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="about.html">About</a>
+          <ul class="nav-dropdown">
+            <li><a href="news.html">News</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="experiences.html">What To Expect</a>
+          <ul class="nav-dropdown">
+            <li><a href="featured-songwriters.html">Featured Songwriters</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="corporate.html">Experiences</a>
+          <ul class="nav-dropdown">
+            <li><a href="home-shows.html">Home Shows</a></li>
+            <li><a href="songwriter-showcase.html">Songwriter Showcase</a></li>
+            <li><a href="writers-round.html">Writers Round</a></li>
+            <li><a href="corporate.html">Corporate Events</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="hero page-hero">
+    <img class="hero-image-bg" src="assets/images/hero-guitar.jpg" alt="Songwriter showcase">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Songwriters Showcase<br>Nashville</h1>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section-white">
+    <div class="container">
+      <div class="split">
+        <div class="split-content">
+          <h2>Experience the Art of Storytelling</h2>
+          <p>
+            Casa Concert brings the magic of a songwriter showcase into an intimate setting, right in your own home. A songwriter showcase is a live performance event where emerging and seasoned songwriters take the stage to present their original songs, highlighting the artistry of songwriting and the stories that inspire their music.
+          </p>
+          <p>
+            Unlike a full-band performance, these showcases focus on the raw, authentic connection between the songwriter and the audience, putting the spotlight on the craft and creativity behind each song.
+          </p>
+          <a href="contact.html" class="btn btn-primary">Book a Showcase</a>
+        </div>
+        <div class="split-image">
+          <img src="assets/images/blog-2.jpg" alt="Microphone for songwriter showcase">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cyan-band">
+    <div class="container">
+      <h2>Discover Original Songs</h2>
+      <p>Our carefully curated showcases create an inviting and memorable atmosphere where you can discover new talent and connect deeply with the music. Casa Concert hand-selects passionate, emerging artists to share their original compositions.</p>
+      <a href="contact.html" class="btn btn-white" style="margin-top: 16px;">Get Started</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bg" style="background-image: url('assets/images/about-img-1.jpg'); padding: 48px 0 24px;">
+      <div class="footer-logo"><img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert"></div>
+      <ul class="footer-nav">
+        <li><a href="about.html">About</a></li>
+        <li><a href="experiences.html">What To Expect</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/people/Casa-Concert/61565594474633/" target="_blank" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/casaconcert/" target="_blank" aria-label="Instagram">&#9901;</a>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Casa Concert. All Rights Reserved.</p></div>
+    </div>
+    <div class="footer-top-band"></div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

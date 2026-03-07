@@ -1,0 +1,7 @@
+v2/
+node_modules/
+.DS_Store
+assets/images/screenshots/
+assets/images/close-screenshots/
+assets/scraped-content/
+*.output

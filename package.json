@@ -1,0 +1,12 @@
+{
+  "name": "casa-concerts",
+  "version": "1.0.0",
+  "description": "Casa Concert - Private Nashville Songwriter Experiences",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

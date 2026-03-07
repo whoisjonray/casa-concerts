@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Casa Concert - Book Your Private Songwriter Experience</title>
+  <meta name="description" content="Ready to book your private Casa Concert songwriter experience? Contact us to schedule your show in Nashville or anywhere in the country.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="container">
+      <div class="nav-left"><a href="index.html" class="nav-logo"><img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert"></a><a href="tel:4063800096" class="nav-phone">406-380-0096</a></div>
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="about.html">About</a>
+          <ul class="nav-dropdown">
+            <li><a href="news.html">News</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="experiences.html">What To Expect</a>
+          <ul class="nav-dropdown">
+            <li><a href="featured-songwriters.html">Featured Songwriters</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="corporate.html">Experiences</a>
+          <ul class="nav-dropdown">
+            <li><a href="home-shows.html">Home Shows</a></li>
+            <li><a href="songwriter-showcase.html">Songwriter Showcase</a></li>
+            <li><a href="writers-round.html">Writers Round</a></li>
+            <li><a href="corporate.html">Corporate Events</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="hero page-hero">
+    <img class="hero-image-bg" src="assets/images/services-2.jpg" alt="Studio equipment">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Contact</h1>
+    </div>
+  </section>
+
+  <!-- Cyan Band -->
+  <div class="cyan-band">
+    <div class="container">
+      <p>Ready to experience the magic of Nashville's music scene up close? Whether you're hosting a small gathering or a special event, we'll bring the heart of Nashville directly to you. Fill out the form below to book your exclusive songwriter session and create unforgettable memories.</p>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+  <section class="section-dark">
+    <div class="container" style="max-width: 800px;">
+      <div class="form-card">
+        <p style="color: #666; font-size: 0.85rem; margin-bottom: 24px;">* indicates required fields</p>
+        <form action="#" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="location">Where Are You Located?</label>
+            <input type="text" id="location" name="location" placeholder="City, State">
+          </div>
+          <div class="form-group">
+            <label for="type">What Are You Interested In?</label>
+            <select id="type" name="type">
+              <option value="">Select one...</option>
+              <option value="nashville-stay">Nashville Stay + Concert</option>
+              <option value="private-show">Private Show at My Location</option>
+              <option value="corporate">Corporate Event</option>
+              <option value="other">Something Else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Event</label>
+            <textarea id="message" name="message" placeholder="Date, group size, occasion, anything else we should know..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center; padding: 16px;">Send Message</button>
+          <p class="form-note">We'll get back to you within 24 hours. You can also call us directly at <a href="tel:4063800096" style="color: var(--color-cyan);">406-380-0096</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bg" style="background-image: url('assets/images/about-img-1.jpg'); padding: 48px 0 24px;">
+      <div class="footer-logo"><img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert"></div>
+      <ul class="footer-nav">
+        <li><a href="about.html">About</a></li>
+        <li><a href="experiences.html">What To Expect</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/people/Casa-Concert/61565594474633/" target="_blank" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/casaconcert/" target="_blank" aria-label="Instagram">&#9901;</a>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Casa Concert. All Rights Reserved.</p></div>
+    </div>
+    <div class="footer-top-band"></div>
+  </footer>
+
+  <script>
+    // Pre-fill type from URL param
+    const params = new URLSearchParams(window.location.search);
+    const typeParam = params.get('type');
+    if (typeParam) {
+      const typeMap = { host: 'private-show', corporate: 'corporate' };
+      const select = document.getElementById('type');
+      if (select && typeMap[typeParam]) select.value = typeMap[typeParam];
+    }
+
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

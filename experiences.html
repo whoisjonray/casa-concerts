@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What To Expect | Casa Concert - Nashville Songwriter Shows</title>
+  <meta name="description" content="Private home concerts, songwriter showcases, and writers' rounds. 90 minutes of live music from Nashville's best songwriters, performed in your living room.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="container">
+      <div class="nav-left"><a href="index.html" class="nav-logo"><img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert"></a><a href="tel:4063800096" class="nav-phone">406-380-0096</a></div>
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="about.html">About</a>
+          <ul class="nav-dropdown">
+            <li><a href="news.html">News</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="experiences.html">What To Expect</a>
+          <ul class="nav-dropdown">
+            <li><a href="featured-songwriters.html">Featured Songwriters</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="corporate.html">Experiences</a>
+          <ul class="nav-dropdown">
+            <li><a href="home-shows.html">Home Shows</a></li>
+            <li><a href="songwriter-showcase.html">Songwriter Showcase</a></li>
+            <li><a href="writers-round.html">Writers Round</a></li>
+            <li><a href="corporate.html">Corporate Events</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="hero page-hero">
+    <img class="hero-image-bg" src="assets/images/hero-guitar.jpg" alt="Live songwriter performance">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>What To Expect</h1>
+    </div>
+  </section>
+
+  <!-- Your Unique Venue -->
+  <section class="section-white">
+    <div class="container">
+      <div class="split">
+        <div class="split-content">
+          <h2>Your Unique Venue Atmosphere</h2>
+          <p>
+            Picture this: you're sitting in your living room, and two songwriters who've had songs on country radio are performing right in front of you. It's like having the Bluebird Cafe in your house, except there's no wait list, no crowd, and no one between you and the music.
+          </p>
+          <p>
+            The atmosphere is personal and authentic. It's just you, your guests, and the songwriters. Every performance is different because every conversation is different. That's what makes it special.
+          </p>
+          <a href="contact.html" class="btn btn-primary">Book Today</a>
+        </div>
+        <div class="split-images">
+          <img src="assets/images/about-img-1.jpg" alt="Living room concert">
+          <img src="assets/images/services-1.jpg" alt="Intimate performance">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cyan Band -->
+  <div class="cyan-band">
+    <div class="container">
+      <h2>Discover Tomorrow's Hits</h2>
+    </div>
+  </div>
+
+  <!-- Discover Tomorrow's Hits -->
+  <section class="section-dark">
+    <div class="container">
+      <div class="split split-reverse">
+        <div class="split-content">
+          <h2>90 Minutes You Won't Forget</h2>
+          <p>
+            Over 90 minutes, two professional songwriters with major publishing deals perform six original songs, giving you a front-row seat to what could be tomorrow's chart-topping hits.
+          </p>
+          <p>
+            They'll share the stories behind each song, answer your questions, and maybe even play something nobody else has heard yet. It's a window into the creative process of people whose songs you've been singing along to without ever knowing their names.
+          </p>
+        </div>
+        <div class="split-image">
+          <img src="assets/images/blog-2.jpg" alt="Microphone for songwriters">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cyan Band -->
+  <div class="cyan-band">
+    <div class="container">
+      <h2>Just a Few Clicks Away</h2>
+      <p>
+        The intimacy of Casa Concert can't be replicated at larger venues. We bring the full experience to your living room, your Airbnb, your vacation rental, or your event space. Nashville comes to you.
+      </p>
+      <a href="contact.html" class="btn btn-white" style="margin-top: 16px;">Start Your Show</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bg" style="background-image: url('assets/images/about-img-1.jpg'); padding: 48px 0 24px;">
+      <div class="footer-logo"><img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert"></div>
+      <ul class="footer-nav">
+        <li><a href="about.html">About</a></li>
+        <li><a href="experiences.html">What To Expect</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/people/Casa-Concert/61565594474633/" target="_blank" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/casaconcert/" target="_blank" aria-label="Instagram">&#9901;</a>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Casa Concert. All Rights Reserved.</p></div>
+    </div>
+    <div class="footer-top-band"></div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Featured Songwriters | Casa Concert - Nashville's Best</title>
+  <meta name="description" content="Meet the professional Nashville songwriters who perform at Casa Concert. Major publishing deals, chart-topping hits, and stories you won't hear anywhere else.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="navbar">
+    <div class="container">
+      <div class="nav-left"><a href="index.html" class="nav-logo"><img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert"></a><a href="tel:4063800096" class="nav-phone">406-380-0096</a></div>
+      <ul class="nav-links" id="navLinks">
+        <li>
+          <a href="about.html">About</a>
+          <ul class="nav-dropdown">
+            <li><a href="news.html">News</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="experiences.html">What To Expect</a>
+          <ul class="nav-dropdown">
+            <li><a href="featured-songwriters.html">Featured Songwriters</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="corporate.html">Experiences</a>
+          <ul class="nav-dropdown">
+            <li><a href="home-shows.html">Home Shows</a></li>
+            <li><a href="songwriter-showcase.html">Songwriter Showcase</a></li>
+            <li><a href="writers-round.html">Writers Round</a></li>
+            <li><a href="corporate.html">Corporate Events</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="hero page-hero">
+    <img class="hero-image-bg" src="assets/images/hero-guitar.jpg" alt="Songwriters performing">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Featured Songwriters</h1>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <div class="cyan-band">
+    <div class="container">
+      <h2>Who Will Be There?</h2>
+      <p>Experience the heart and soul of Nashville's songwriting magic in a way that's as personal as it is unforgettable. Our intimate songwriter sessions bring two of Nashville's most talented, professional songwriters into your home or private event, where they'll perform their original songs, some of which are #1 hits or tracks you've already heard on the radio.</p>
+    </div>
+  </div>
+
+  <!-- Songwriters Grid -->
+  <section class="section-white">
+    <div class="container">
+      <div class="songwriters-grid">
+        <div class="songwriter-card">
+          <img src="assets/images/songwriter-1.jpg" alt="Nashville songwriter">
+          <div style="padding: 24px; text-align: center;">
+            <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: #111; text-transform: uppercase; margin-bottom: 8px;">Songwriter Name</h3>
+            <p style="color: #666; font-size: 0.9rem; line-height: 1.6;">Professional songwriter with major publishing deals. Songs placed with top country artists. Bio coming soon.</p>
+          </div>
+        </div>
+        <div class="songwriter-card">
+          <img src="assets/images/songwriter-2.jpg" alt="Nashville songwriter">
+          <div style="padding: 24px; text-align: center;">
+            <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: #111; text-transform: uppercase; margin-bottom: 8px;">Songwriter Name</h3>
+            <p style="color: #666; font-size: 0.9rem; line-height: 1.6;">Professional songwriter with major publishing deals. Songs placed with top country artists. Bio coming soon.</p>
+          </div>
+        </div>
+        <div class="songwriter-card">
+          <img src="assets/images/songwriter-3.jpg" alt="Nashville songwriter">
+          <div style="padding: 24px; text-align: center;">
+            <h3 style="font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: #111; text-transform: uppercase; margin-bottom: 8px;">Songwriter Name</h3>
+            <p style="color: #666; font-size: 0.9rem; line-height: 1.6;">Professional songwriter with major publishing deals. Songs placed with top country artists. Bio coming soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cyan-band">
+    <div class="container">
+      <h2>Are You Ready?</h2>
+      <p>This immersive experience is designed to connect you to the music and the artists in a way that's impossible at larger venues. Many of our guests say it's the highlight of their Nashville visit. Ready to make your next gathering truly special?</p>
+      <a href="contact.html" class="btn btn-white" style="margin-top: 16px;">Book Now</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bg" style="background-image: url('assets/images/about-img-1.jpg'); padding: 48px 0 24px;">
+      <div class="footer-logo"><img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert"></div>
+      <ul class="footer-nav">
+        <li><a href="about.html">About</a></li>
+        <li><a href="experiences.html">What To Expect</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/people/Casa-Concert/61565594474633/" target="_blank" aria-label="Facebook">f</a>
+        <a href="https://www.instagram.com/casaconcert/" target="_blank" aria-label="Instagram">&#9901;</a>
+      </div>
+      <div class="footer-bottom"><p>&copy; 2026 Casa Concert. All Rights Reserved.</p></div>
+    </div>
+    <div class="footer-top-band"></div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+    document.getElementById('navToggle').addEventListener('click', function() {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
