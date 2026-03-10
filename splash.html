@@ -7,393 +7,375 @@
   <meta name="description" content="Elevate your Nashville visit with a private living-room performance from hit songwriters who shape the sound of Music City.">
   <link rel="icon" href="assets/images/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --warm-black: #1a1714;
-      --warm-dark: #2a2520;
-      --cream: #faf7f2;
-      --cream-light: #fdfcfa;
-      --gold: #c9a84c;
-      --gold-light: #dfc06a;
-      --gold-dark: #a8882e;
+      --white: #ffffff;
+      --off-white: #f9f8f6;
+      --sand: #f0ede8;
+      --ink: #1a1a1a;
+      --ink-light: #484848;
+      --ink-muted: #717171;
+      --coral: #e8604c;
+      --coral-hover: #d44f3c;
       --teal: #3a8b8c;
-      --teal-light: #4ca8a9;
-      --text-dark: #2c2823;
-      --text-muted: #6b6560;
-      --text-light: rgba(255,255,255,0.9);
+      --teal-soft: #e8f4f4;
+      --radius: 16px;
+      --radius-sm: 12px;
+      --radius-pill: 999px;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--text-dark);
-      background: var(--cream);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--white);
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
 
-    /* ── Header ── */
-    .header {
+    /* ─── NAV ─── */
+    .nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 16px 32px;
+      padding: 0 clamp(20px, 4vw, 48px);
+      height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.4s, box-shadow 0.4s;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
     }
-    .header.scrolled {
-      background: rgba(26, 23, 20, 0.95);
-      box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
-    }
-    .header-logo img {
-      height: 48px;
-      width: auto;
-      filter: brightness(0) invert(1);
-      transition: height 0.3s;
-    }
-    .header.scrolled .header-logo img { height: 36px; }
-    .header-phone {
-      color: #fff;
+    .nav.scrolled { border-color: rgba(0,0,0,0.08); }
+    .nav-logo img { height: 38px; width: auto; }
+    .nav-right { display: flex; align-items: center; gap: 24px; }
+    .nav-phone {
+      color: var(--ink);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.875rem;
       font-weight: 500;
-      letter-spacing: 0.03em;
-      opacity: 0.85;
-      transition: opacity 0.3s;
+      transition: color 0.2s;
     }
-    .header-phone:hover { opacity: 1; }
-
-    /* ── Hero ── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
+    .nav-phone:hover { color: var(--coral); }
+    .nav-cta {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: url('assets/background (1).png') center/cover no-repeat;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(26, 23, 20, 0.75) 0%,
-        rgba(26, 23, 20, 0.5) 40%,
-        rgba(26, 23, 20, 0.6) 100%
-      );
-    }
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      max-width: 780px;
-      text-align: center;
-      padding: 120px 24px 80px;
-    }
-    .hero-tagline {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
+      gap: 6px;
+      padding: 10px 20px;
+      background: var(--coral);
+      color: white;
+      font-size: 0.8125rem;
       font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .hero h1 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 600;
-      line-height: 1.25;
-      color: #fff;
-      margin-bottom: 24px;
-    }
-    .hero-sub {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.85);
-      font-weight: 300;
-      max-width: 600px;
-      margin: 0 auto 40px;
-    }
-    .hero-scroll {
-      display: inline-block;
-      color: var(--gold);
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
       text-decoration: none;
-      margin-top: 20px;
-      animation: pulse-down 2s ease infinite;
+      border-radius: var(--radius-pill);
+      transition: background 0.2s, transform 0.2s;
     }
-    .hero-scroll span {
-      display: block;
-      margin-top: 8px;
-      font-size: 1.4rem;
-    }
-    @keyframes pulse-down {
-      0%, 100% { transform: translateY(0); opacity: 0.7; }
-      50% { transform: translateY(6px); opacity: 1; }
-    }
+    .nav-cta:hover { background: var(--coral-hover); transform: scale(1.03); }
 
-    /* ── Video Section ── */
-    .video-section {
-      background: var(--warm-black);
-      padding: 80px 24px;
-    }
-    .video-wrap {
-      max-width: 900px;
+    /* ─── HERO ─── */
+    .hero {
+      padding: 112px clamp(20px, 5vw, 80px) 0;
+      max-width: 1280px;
       margin: 0 auto;
     }
-    .video-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
+    .hero-text {
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px 6px 8px;
+      background: var(--teal-soft);
+      color: var(--teal);
+      font-size: 0.8125rem;
       font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
+      border-radius: var(--radius-pill);
+      margin-bottom: 24px;
+    }
+    .hero-badge svg { flex-shrink: 0; }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.25rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .hero h1 .accent { color: var(--coral); }
+    .hero-desc {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      line-height: 1.6;
+      color: var(--ink-light);
+      max-width: 560px;
+    }
+
+    /* ─── HERO IMAGE ─── */
+    .hero-photo {
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: clamp(280px, 50vw, 520px);
+      object-fit: cover;
+      display: block;
+    }
+    .hero-photo-tag {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-sm);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+    .hero-photo-tag svg { color: var(--coral); }
+
+    /* ─── VIDEO SECTION ─── */
+    .video-section {
+      padding: 100px clamp(20px, 5vw, 80px) 80px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-header {
       text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--ink);
       margin-bottom: 12px;
     }
-    .video-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      color: #fff;
-      text-align: center;
-      margin-bottom: 36px;
-      font-weight: 400;
+    .section-header p {
+      font-size: 1.05rem;
+      color: var(--ink-muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.55;
     }
-    .video-container {
+    .video-player {
       position: relative;
       width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
       aspect-ratio: 16/9;
-      border-radius: 8px;
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      background: var(--ink);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.12);
     }
-    .video-container video {
+    .video-player video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    /* ── CTA Sections ── */
-    .cta-strip {
+    /* ─── SPLIT CTA ─── */
+    .split {
+      padding: 0 clamp(20px, 5vw, 80px);
+      max-width: 1280px;
+      margin: 0 auto 80px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 0;
+      gap: 24px;
     }
-    .cta-card {
-      padding: 64px 40px;
+    .split-card {
+      padding: clamp(32px, 4vw, 56px);
+      border-radius: var(--radius);
       display: flex;
       flex-direction: column;
+    }
+    .split-card--stay {
+      background: var(--off-white);
+    }
+    .split-card--host {
+      background: var(--ink);
+      color: var(--white);
+    }
+    .split-card--host .split-desc { color: rgba(255,255,255,0.7); }
+    .split-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
       align-items: center;
-      text-align: center;
       justify-content: center;
+      margin-bottom: 24px;
+      font-size: 1.5rem;
     }
-    .cta-card--stay {
-      background: var(--cream-light);
+    .split-card--stay .split-icon {
+      background: var(--teal-soft);
+      color: var(--teal);
     }
-    .cta-card--host {
-      background: var(--warm-dark);
-      color: #fff;
+    .split-card--host .split-icon {
+      background: rgba(232, 96, 76, 0.15);
+      color: var(--coral);
     }
-    .cta-card--host .cta-copy { color: rgba(255,255,255,0.8); }
-    .cta-icon {
-      font-size: 2rem;
-      margin-bottom: 16px;
+    .split-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.25rem, 2vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+      line-height: 1.25;
     }
-    .cta-card--stay .cta-icon { color: var(--teal); }
-    .cta-card--host .cta-icon { color: var(--gold); }
-    .cta-heading {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
-      font-weight: 600;
-      margin-bottom: 16px;
-      line-height: 1.35;
-    }
-    .cta-copy {
+    .split-desc {
       font-size: 0.95rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-      max-width: 420px;
-      margin-bottom: 28px;
+      line-height: 1.65;
+      color: var(--ink-muted);
+      margin-bottom: 32px;
+      flex-grow: 1;
     }
     .btn {
-      display: inline-block;
-      padding: 15px 32px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 28px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
       text-decoration: none;
-      border-radius: 4px;
-      transition: all 0.3s ease;
+      border-radius: var(--radius-sm);
+      transition: all 0.25s cubic-bezier(.4,0,.2,1);
       cursor: pointer;
       border: none;
-    }
-    .btn--gold {
-      background: var(--gold);
-      color: var(--warm-black);
-    }
-    .btn--gold:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(201, 168, 76, 0.35);
-    }
-    .btn--teal {
-      background: var(--teal);
-      color: #fff;
-    }
-    .btn--teal:hover {
-      background: var(--teal-light);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(58, 139, 140, 0.35);
-    }
-    .btn--outline {
-      background: transparent;
-      color: var(--gold);
-      border: 1.5px solid var(--gold);
-    }
-    .btn--outline:hover {
-      background: var(--gold);
-      color: var(--warm-black);
-    }
-
-    /* ── Urgency Banner ── */
-    .urgency {
-      background: var(--gold);
-      color: var(--warm-black);
       text-align: center;
-      padding: 28px 24px;
+      line-height: 1.3;
     }
-    .urgency p {
-      font-size: 1rem;
-      font-weight: 600;
-      max-width: 700px;
+    .btn--coral {
+      background: var(--coral);
+      color: white;
+    }
+    .btn--coral:hover {
+      background: var(--coral-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(232, 96, 76, 0.3);
+    }
+    .btn--white {
+      background: white;
+      color: var(--ink);
+    }
+    .btn--white:hover {
+      background: var(--off-white);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+    .btn svg { flex-shrink: 0; }
+
+    /* ─── URGENCY STRIP ─── */
+    .urgency {
+      text-align: center;
+      padding: 0 clamp(20px, 5vw, 80px) 80px;
+      max-width: 1280px;
       margin: 0 auto;
+    }
+    .urgency-inner {
+      padding: 28px 40px;
+      background: linear-gradient(135deg, var(--coral) 0%, #e87c5c 100%);
+      border-radius: var(--radius);
+      color: white;
+    }
+    .urgency-inner p {
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      font-weight: 600;
       line-height: 1.5;
     }
 
-    /* ── Contact Form Section ── */
-    .contact-section {
-      background: var(--warm-black);
-      padding: 80px 24px;
+    /* ─── CONTACT ─── */
+    .contact {
+      background: var(--off-white);
+      padding: 100px clamp(20px, 5vw, 80px);
     }
     .contact-inner {
-      max-width: 560px;
+      max-width: 580px;
       margin: 0 auto;
     }
-    .contact-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      text-align: center;
-      margin-bottom: 12px;
-    }
-    .contact-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      color: #fff;
-      text-align: center;
-      margin-bottom: 12px;
-      font-weight: 400;
-    }
-    .contact-sub {
-      text-align: center;
-      color: rgba(255,255,255,0.65);
-      font-size: 0.9rem;
-      margin-bottom: 40px;
-      line-height: 1.6;
+    .contact .section-header { margin-bottom: 40px; }
+    .contact .section-header h2 {
+      margin-bottom: 8px;
     }
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
-    .form-group {
-      margin-bottom: 20px;
-    }
+    .form-group { margin-bottom: 18px; }
     .form-group label {
       display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 8px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      margin-bottom: 6px;
     }
     .form-group input,
     .form-group select,
     .form-group textarea {
       width: 100%;
       padding: 14px 16px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 4px;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      transition: border-color 0.3s, background 0.3s;
+      background: var(--white);
+      border: 1.5px solid rgba(0,0,0,0.1);
+      border-radius: var(--radius-sm);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9375rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
       outline: none;
     }
     .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(255,255,255,0.3);
-    }
+    .form-group textarea::placeholder { color: #b0ada8; }
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color: var(--gold);
-      background: rgba(255,255,255,0.1);
+      border-color: var(--coral);
+      box-shadow: 0 0 0 3px rgba(232, 96, 76, 0.1);
     }
     .form-group select {
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23717171' stroke-width='1.5'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 16px center;
       cursor: pointer;
     }
-    .form-group select option {
-      background: var(--warm-dark);
-      color: #fff;
-    }
-    .form-group textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
+    .form-group textarea { min-height: 100px; resize: vertical; }
     .form-submit {
       width: 100%;
       padding: 16px;
-      font-size: 0.8rem;
+      font-size: 0.9375rem;
       margin-top: 4px;
     }
     .form-note {
       text-align: center;
       margin-top: 20px;
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.45);
+      font-size: 0.8125rem;
+      color: var(--ink-muted);
     }
-    .form-note a {
-      color: var(--gold);
-      text-decoration: none;
-    }
+    .form-note a { color: var(--coral); text-decoration: none; font-weight: 500; }
     .form-note a:hover { text-decoration: underline; }
     .form-success {
       display: none;
@@ -401,198 +383,252 @@
       padding: 48px 24px;
     }
     .form-success.active { display: block; }
+    .form-success-icon {
+      width: 64px; height: 64px;
+      background: rgba(232, 96, 76, 0.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.75rem;
+    }
     .form-success h3 {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 1.6rem;
-      color: #fff;
-      margin-bottom: 12px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
     }
     .form-success p {
-      color: rgba(255,255,255,0.7);
+      color: var(--ink-muted);
       font-size: 0.95rem;
       line-height: 1.6;
     }
+    .form-success a { color: var(--coral); font-weight: 500; text-decoration: none; }
 
-    /* ── Footer ── */
+    /* ─── FOOTER ─── */
     .footer {
-      background: #111;
-      padding: 36px 24px;
-      text-align: center;
+      padding: 40px clamp(20px, 5vw, 80px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1280px;
+      margin: 0 auto;
     }
-    .footer-logo img {
-      height: 32px;
-      filter: brightness(0) invert(1);
-      opacity: 0.5;
-      margin-bottom: 12px;
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
-    .footer p {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.3);
-    }
-    .footer a {
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-    }
-    .footer a:hover { color: var(--gold); }
+    .footer-logo img { height: 28px; width: auto; }
+    .footer p { font-size: 0.8125rem; color: var(--ink-muted); }
+    .footer a { color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .footer a:hover { color: var(--coral); }
 
-    /* ── Responsive ── */
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .stagger-1 { transition-delay: 0.05s; }
+    .stagger-2 { transition-delay: 0.15s; }
+    .stagger-3 { transition-delay: 0.25s; }
+
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
-      .header { padding: 12px 20px; }
-      .header-logo img { height: 36px; }
-      .hero-inner { padding: 100px 20px 60px; }
-      .cta-strip { grid-template-columns: 1fr; }
-      .cta-card { padding: 48px 24px; }
+      .nav { height: 64px; }
+      .nav-logo img { height: 30px; }
+      .nav-phone { display: none; }
+      .nav-cta { padding: 8px 16px; font-size: 0.75rem; }
+      .hero { padding-top: 96px; }
+      .hero h1 { font-size: 2.2rem; }
+      .split { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
-      .video-section { padding: 48px 16px; }
-      .contact-section { padding: 48px 16px; }
+      .footer { flex-direction: column; gap: 12px; text-align: center; }
+      .footer-left { flex-direction: column; gap: 8px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="header" id="header">
-    <a href="#" class="header-logo">
-      <img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert">
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">
+      <img src="assets/images/casa-concert-logo-dark.svg" alt="Casa Concert">
     </a>
-    <a href="tel:4063800096" class="header-phone">(406) 380-0096</a>
-  </header>
+    <div class="nav-right">
+      <a href="tel:4063800096" class="nav-phone">(406) 380-0096</a>
+      <a href="https://www.vrbo.com/2542098?dateless=true" target="_blank" class="nav-cta">
+        Book a Stay
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </nav>
 
   <!-- Hero -->
-  <section class="hero" id="top">
-    <div class="hero-bg"></div>
-    <div class="hero-overlay"></div>
-    <div class="hero-inner">
-      <p class="hero-tagline">A Private Nashville Songwriter Experience</p>
-      <h1>Elevate your Nashville visit with a private living-room performance from hit songwriters who shape the sound of Music City.</h1>
-      <p class="hero-sub">Make your Nashville getaway an unforgettable experience in one of two ways.</p>
-      <a href="#watch" class="hero-scroll">See It in Action<span>&#8595;</span></a>
+  <section class="hero">
+    <div class="hero-text fade-up">
+      <div class="hero-badge">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        Private Nashville Songwriter Experiences
+      </div>
+      <h1>Your living room.<br>Their <span class="accent">hit songs.</span><br>One night only.</h1>
+      <p class="hero-desc">Elevate your Nashville visit with a private living-room performance from hit songwriters who shape the sound of Music City. Make your Nashville getaway an unforgettable experience in one of two ways.</p>
+    </div>
+    <div class="hero-photo fade-up stagger-2">
+      <img src="assets/background (1).png" alt="The Casa Concert living room in Nashville - bright, welcoming space with teal accent chairs">
+      <div class="hero-photo-tag">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Nashville's most walkable neighborhood
+      </div>
     </div>
   </section>
 
   <!-- Video -->
   <section class="video-section" id="watch">
-    <div class="video-wrap">
-      <p class="video-label">The Experience</p>
-      <h2 class="video-title">What a Casa Concert looks like</h2>
-      <div class="video-container">
-        <video controls playsinline preload="metadata" poster="assets/images/casa-concert-screengrab.jpg">
-          <source src="assets/STAYCATION_NASHVILLE_PART 2_CASA CONCERT.mp4" type="video/mp4">
-          Your browser doesn't support video playback.
-        </video>
+    <div class="section-header fade-up">
+      <h2>See what a Casa Concert feels like</h2>
+      <p>Real songwriters. Real living room. Real magic.</p>
+    </div>
+    <div class="video-player fade-up stagger-1">
+      <video controls playsinline preload="metadata" poster="assets/images/casa-concert-screengrab.jpg">
+        <source src="assets/STAYCATION_NASHVILLE_PART 2_CASA CONCERT.mp4" type="video/mp4">
+        Your browser doesn't support video playback.
+      </video>
+    </div>
+  </section>
+
+  <!-- Two Options -->
+  <section class="split">
+    <div class="split-card split-card--stay fade-up">
+      <div class="split-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       </div>
+      <h3 class="split-title">Stay with us in Nashville</h3>
+      <p class="split-desc">Stay in Nashville's most welcoming and walkable neighborhood, surrounded by the city's top bars, restaurants and attractions. Our guests receive the best Casa Concert packages available.</p>
+      <a href="https://www.vrbo.com/2542098?dateless=true" target="_blank" class="btn btn--coral">
+        Book Your Stay at Casa Concert Before Dates Fill Up
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </a>
+    </div>
+    <div class="split-card split-card--host fade-up stagger-1">
+      <div class="split-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+      </div>
+      <h3 class="split-title">Bring the music to you</h3>
+      <p class="split-desc">Is our calendar full? Do you already have a place to stay? Contact us today to enhance your Nashville trip!</p>
+      <a href="#contact" class="btn btn--white">
+        Host a Casa Concert Experience Anywhere in Nashville
+      </a>
     </div>
   </section>
 
-  <!-- Two CTAs -->
-  <section class="cta-strip">
-    <div class="cta-card cta-card--stay">
-      <div class="cta-icon">&#9834;</div>
-      <h3 class="cta-heading">Stay With Us in Nashville</h3>
-      <p class="cta-copy">Stay in Nashville's most welcoming and walkable neighborhood, surrounded by the city's top bars, restaurants and attractions. Our guests receive the best Casa Concert packages available.</p>
-      <a href="https://www.vrbo.com/2542098?dateless=true" target="_blank" class="btn btn--teal">Book Your Stay at Casa Concert Before Dates Fill Up</a>
-    </div>
-    <div class="cta-card cta-card--host">
-      <div class="cta-icon">&#9835;</div>
-      <h3 class="cta-heading">Bring the Music to You</h3>
-      <p class="cta-copy">Is our calendar full? Do you already have a place to stay? Contact us today to enhance your Nashville trip!</p>
-      <a href="#contact" class="btn btn--outline">Host a Casa Concert Experience Anywhere in Nashville</a>
+  <!-- Urgency -->
+  <section class="urgency fade-up">
+    <div class="urgency-inner">
+      <p>Inventory for Casa Concert packages is limited, so book yours today while songwriters are still available!</p>
     </div>
   </section>
 
-  <!-- Urgency Banner -->
-  <section class="urgency">
-    <p>Inventory for Casa Concert packages is limited, so book yours today while songwriters are still available!</p>
-  </section>
-
-  <!-- Contact Form -->
-  <section class="contact-section" id="contact">
+  <!-- Contact -->
+  <section class="contact" id="contact">
     <div class="contact-inner">
-      <p class="contact-label">Get in Touch</p>
-      <h2 class="contact-title">Host a Casa Concert Experience</h2>
-      <p class="contact-sub">Tell us about your trip and we'll put together the perfect songwriter session for your group.</p>
+      <div class="section-header fade-up">
+        <h2>Tell us about your trip</h2>
+        <p>We'll put together the perfect songwriter session for your group.</p>
+      </div>
 
-      <form id="contactForm">
+      <form id="contactForm" class="fade-up stagger-1">
         <div class="form-row">
           <div class="form-group">
-            <label for="firstName">First Name *</label>
-            <input type="text" id="firstName" name="firstName" required>
+            <label for="firstName">First name *</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
           </div>
           <div class="form-group">
-            <label for="lastName">Last Name *</label>
-            <input type="text" id="lastName" name="lastName" required>
+            <label for="lastName">Last name *</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
           </div>
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone">
+            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
           </div>
-        </div>
-        <div class="form-group">
-          <label for="dates">Preferred Dates</label>
-          <input type="text" id="dates" name="dates" placeholder="e.g. March 15-18">
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="groupSize">Group Size</label>
-            <input type="text" id="groupSize" name="groupSize" placeholder="e.g. 8 people">
+            <label for="dates">Preferred dates</label>
+            <input type="text" id="dates" name="dates" placeholder="e.g. March 15 - 18">
           </div>
           <div class="form-group">
-            <label for="type">Interest</label>
-            <select id="type" name="type">
-              <option value="">Select one...</option>
-              <option value="nashville-host">Host at My Nashville Location</option>
-              <option value="already-staying">Already Have a Place to Stay</option>
-              <option value="corporate">Corporate/Group Event</option>
-              <option value="other">Something Else</option>
-            </select>
+            <label for="groupSize">Group size</label>
+            <input type="text" id="groupSize" name="groupSize" placeholder="e.g. 8 people">
           </div>
         </div>
         <div class="form-group">
-          <label for="message">Tell Us About Your Trip</label>
-          <textarea id="message" name="message" placeholder="Occasion, vibe, anything else we should know..."></textarea>
+          <label for="type">What are you interested in?</label>
+          <select id="type" name="type">
+            <option value="">Pick one...</option>
+            <option value="nashville-host">Host at my Nashville location</option>
+            <option value="already-staying">Already have a place to stay</option>
+            <option value="corporate">Corporate / group event</option>
+            <option value="other">Something else</option>
+          </select>
         </div>
-        <button type="submit" class="btn btn--gold form-submit">Send Message</button>
-        <p class="form-note">You can also call Rob directly at <a href="tel:4063800096">(406) 380-0096</a> or email <a href="mailto:rob@songgame.com">rob@songgame.com</a></p>
+        <div class="form-group">
+          <label for="message">Tell us about your trip</label>
+          <textarea id="message" name="message" placeholder="The occasion, vibe you're going for, anything we should know..."></textarea>
+        </div>
+        <button type="submit" class="btn btn--coral form-submit">Send message</button>
+        <p class="form-note">Or call Rob at <a href="tel:4063800096">(406) 380-0096</a> &middot; <a href="mailto:rob@songgame.com">rob@songgame.com</a></p>
       </form>
 
       <div class="form-success" id="formSuccess">
-        <h3>Thanks for reaching out!</h3>
-        <p>We got your message and Rob will get back to you within 24 hours. In the meantime, feel free to call <a href="tel:4063800096" style="color: var(--gold);">(406) 380-0096</a> if you want to chat sooner.</p>
+        <div class="form-success-icon">&#10003;</div>
+        <h3>You're all set!</h3>
+        <p>Rob will get back to you within 24 hours. If you want to chat sooner, call <a href="tel:4063800096">(406) 380-0096</a> anytime.</p>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-logo">
-      <img src="assets/images/casa-concert-logo-light.svg" alt="Casa Concert">
+    <div class="footer-left">
+      <a href="#" class="footer-logo"><img src="assets/images/casa-concert-logo-dark.svg" alt="Casa Concert"></a>
+      <p>&copy; 2026 Casa Concert</p>
     </div>
-    <p>&copy; 2026 Casa Concert. All Rights Reserved. | <a href="mailto:rob@songgame.com">rob@songgame.com</a></p>
+    <p><a href="mailto:rob@songgame.com">rob@songgame.com</a></p>
   </footer>
 
   <script>
-    // Header scroll effect
+    // Scroll: nav border
     window.addEventListener('scroll', () => {
-      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 60);
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
     });
 
-    // Form submission
+    // Scroll: reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Form
     document.getElementById('contactForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const form = e.target;
       const btn = form.querySelector('button[type="submit"]');
-      const origText = btn.textContent;
+      const orig = btn.textContent;
       btn.textContent = 'Sending...';
       btn.disabled = true;
-
       const data = Object.fromEntries(new FormData(form));
-
       try {
         const res = await fetch('/api/contact', {
           method: 'POST',
@@ -602,12 +638,9 @@
         if (res.ok) {
           form.style.display = 'none';
           document.getElementById('formSuccess').classList.add('active');
-        } else {
-          throw new Error('Server error');
-        }
+        } else { throw new Error(); }
       } catch {
-        // Fallback: open mailto
-        const subject = encodeURIComponent('Casa Concert Inquiry from ' + (data.firstName || 'Website'));
+        const subj = encodeURIComponent('Casa Concert Inquiry from ' + (data.firstName || 'Website'));
         const body = encodeURIComponent(
           'Name: ' + data.firstName + ' ' + data.lastName +
           '\nEmail: ' + data.email +
@@ -617,8 +650,8 @@
           '\nInterest: ' + (data.type || 'N/A') +
           '\n\n' + (data.message || '')
         );
-        window.location.href = 'mailto:rob@songgame.com?subject=' + subject + '&body=' + body;
-        btn.textContent = origText;
+        window.location.href = 'mailto:rob@songgame.com?subject=' + subj + '&body=' + body;
+        btn.textContent = orig;
         btn.disabled = false;
       }
     });
