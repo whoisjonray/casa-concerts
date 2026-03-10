@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/images/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -56,7 +56,7 @@
       transition: border-color 0.3s;
     }
     .nav.scrolled { border-color: rgba(0,0,0,0.08); }
-    .nav-logo img { height: 38px; width: auto; }
+    .nav-logo img { height: 52px; width: auto; }
     .nav-right { display: flex; align-items: center; gap: 24px; }
     .nav-phone {
       color: var(--ink);
@@ -83,14 +83,16 @@
 
     /* ─── HERO ─── */
     .hero {
-      padding: 112px clamp(20px, 5vw, 80px) 0;
+      padding: 88px clamp(20px, 5vw, 80px) 0;
       max-width: 1280px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 56px);
+      align-items: center;
+      min-height: calc(100vh - 40px);
     }
-    .hero-text {
-      max-width: 720px;
-      margin-bottom: 48px;
-    }
+    .hero-text {}
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -101,24 +103,24 @@
       font-size: 0.8125rem;
       font-weight: 600;
       border-radius: var(--radius-pill);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .hero-badge svg { flex-shrink: 0; }
     .hero h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4.25rem);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3.25rem);
       font-weight: 800;
-      line-height: 1.08;
+      line-height: 1.1;
       letter-spacing: -0.03em;
       color: var(--ink);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .hero h1 .accent { color: var(--coral); }
     .hero-desc {
-      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
       line-height: 1.6;
       color: var(--ink-light);
-      max-width: 560px;
+      max-width: 480px;
     }
 
     /* ─── HERO IMAGE ─── */
@@ -130,22 +132,24 @@
     }
     .hero-photo img {
       width: 100%;
-      height: clamp(280px, 50vw, 520px);
+      height: 100%;
+      min-height: 360px;
+      max-height: 520px;
       object-fit: cover;
       display: block;
     }
     .hero-photo-tag {
       position: absolute;
-      bottom: 20px;
-      left: 20px;
+      bottom: 16px;
+      left: 16px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 18px;
+      padding: 10px 16px;
       background: rgba(255,255,255,0.92);
       backdrop-filter: blur(12px);
       border-radius: var(--radius-sm);
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
       font-weight: 500;
       color: var(--ink);
       box-shadow: 0 4px 24px rgba(0,0,0,0.08);
@@ -163,7 +167,7 @@
       margin-bottom: 48px;
     }
     .section-header h2 {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: clamp(1.75rem, 3.5vw, 2.75rem);
       font-weight: 700;
       letter-spacing: -0.02em;
@@ -237,7 +241,7 @@
       color: var(--coral);
     }
     .split-title {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: clamp(1.25rem, 2vw, 1.6rem);
       font-weight: 700;
       letter-spacing: -0.01em;
@@ -392,7 +396,7 @@
       font-size: 1.75rem;
     }
     .form-success h3 {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--ink);
@@ -441,11 +445,12 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
       .nav { height: 64px; }
-      .nav-logo img { height: 30px; }
+      .nav-logo img { height: 40px; }
       .nav-phone { display: none; }
       .nav-cta { padding: 8px 16px; font-size: 0.75rem; }
-      .hero { padding-top: 96px; }
-      .hero h1 { font-size: 2.2rem; }
+      .hero { padding-top: 80px; grid-template-columns: 1fr; min-height: auto; }
+      .hero h1 { font-size: 2rem; }
+      .hero-photo img { min-height: 240px; max-height: 320px; }
       .split { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .footer { flex-direction: column; gap: 12px; text-align: center; }
