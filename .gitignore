@@ -5,3 +5,4 @@ assets/images/screenshots/
 assets/images/close-screenshots/
 assets/scraped-content/
 *.output
+submissions.json
