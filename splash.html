@@ -19,10 +19,10 @@
       --ink: #1a1a1a;
       --ink-light: #484848;
       --ink-muted: #717171;
-      --coral: #e8604c;
-      --coral-hover: #d44f3c;
-      --teal: #3a8b8c;
-      --teal-soft: #e8f4f4;
+      --coral: #1fc7f5;
+      --coral-hover: #0eb3e0;
+      --teal: #1fc7f5;
+      --teal-soft: #e6f7fd;
       --radius: 16px;
       --radius-sm: 12px;
       --radius-pill: 999px;
@@ -72,7 +72,7 @@
       gap: 6px;
       padding: 10px 20px;
       background: var(--coral);
-      color: white;
+      color: var(--ink);
       font-size: 0.8125rem;
       font-weight: 600;
       text-decoration: none;
@@ -237,7 +237,7 @@
       color: var(--teal);
     }
     .split-card--host .split-icon {
-      background: rgba(232, 96, 76, 0.15);
+      background: rgba(31, 199, 245, 0.15);
       color: var(--coral);
     }
     .split-title {
@@ -274,12 +274,12 @@
     }
     .btn--coral {
       background: var(--coral);
-      color: white;
+      color: var(--ink);
     }
     .btn--coral:hover {
       background: var(--coral-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(232, 96, 76, 0.3);
+      box-shadow: 0 8px 32px rgba(31, 199, 245, 0.35);
     }
     .btn--white {
       background: white;
@@ -301,9 +301,9 @@
     }
     .urgency-inner {
       padding: 28px 40px;
-      background: linear-gradient(135deg, var(--coral) 0%, #e87c5c 100%);
+      background: linear-gradient(135deg, var(--coral) 0%, #47d4f7 100%);
       border-radius: var(--radius);
-      color: white;
+      color: var(--ink);
     }
     .urgency-inner p {
       font-size: clamp(0.95rem, 1.5vw, 1.1rem);
@@ -357,7 +357,7 @@
     .form-group select:focus,
     .form-group textarea:focus {
       border-color: var(--coral);
-      box-shadow: 0 0 0 3px rgba(232, 96, 76, 0.1);
+      box-shadow: 0 0 0 3px rgba(31, 199, 245, 0.15);
     }
     .form-group select {
       appearance: none;
@@ -389,7 +389,7 @@
     .form-success.active { display: block; }
     .form-success-icon {
       width: 64px; height: 64px;
-      background: rgba(232, 96, 76, 0.1);
+      background: rgba(31, 199, 245, 0.1);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 20px;
