@@ -235,18 +235,18 @@
     .video-player {
       position: relative;
       width: 100%;
-      aspect-ratio: 16/9;
+      padding-bottom: 56.25%;
       border-radius: var(--radius);
       overflow: hidden;
       background: #000;
       box-shadow: 0 16px 64px rgba(0,0,0,0.1);
     }
-    .video-player video {
+    .video-player iframe {
+      position: absolute;
+      top: 0; left: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      display: block;
-      background: #000;
+      border: 0;
     }
 
     /* ─── SPLIT CTA ─── */
@@ -520,10 +520,7 @@
       <p>Real songwriters. Real living room. Real magic.</p>
     </div>
     <div class="video-player fade-up stagger-1">
-      <video controls playsinline preload="auto" poster="assets/images/casa-concert-screengrab.jpg">
-        <source src="assets/casa-concert-video.mp4" type="video/mp4">
-        Your browser doesn't support video playback.
-      </video>
+      <iframe src="https://www.youtube.com/embed/pRK67pDIepw?rel=0&modestbranding=1" title="Casa Concert Experience" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
     </div>
   </section>
 
