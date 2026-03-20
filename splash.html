@@ -570,48 +570,53 @@
         <h2>Tell us about your trip</h2>
         <p>We'll put together the perfect songwriter session for your group.</p>
       </div>
-      <form id="contactForm" class="fade-up stagger-1">
+      <form id="contactForm" class="fade-up stagger-1" action="https://formsubmit.co/rob@songgame.com" method="POST">
+        <input type="hidden" name="_subject" value="New Casa Concert Inquiry">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none">
+        <input type="hidden" name="_next" value="https://casaconcerts.com/#thanks">
         <div class="form-row">
           <div class="form-group">
             <label for="firstName">First name *</label>
-            <input type="text" id="firstName" name="firstName" placeholder="Jane" required>
+            <input type="text" id="firstName" name="First Name" placeholder="Jane" required>
           </div>
           <div class="form-group">
             <label for="lastName">Last name *</label>
-            <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+            <input type="text" id="lastName" name="Last Name" placeholder="Doe" required>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="email">Email *</label>
-            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+            <input type="email" id="email" name="Email" placeholder="jane@example.com" required>
           </div>
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+            <input type="tel" id="phone" name="Phone" placeholder="(555) 123-4567">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="dates">Preferred dates</label>
-            <input type="text" id="dates" name="dates" placeholder="e.g. March 15 - 18">
+            <input type="text" id="dates" name="Preferred Dates" placeholder="e.g. March 15 - 18">
           </div>
           <div class="form-group">
             <label for="groupSize">Group size</label>
-            <input type="text" id="groupSize" name="groupSize" placeholder="e.g. 8 people">
+            <input type="text" id="groupSize" name="Group Size" placeholder="e.g. 8 people">
           </div>
         </div>
         <div class="form-group">
           <label for="type">What are you interested in?</label>
-          <select id="type" name="type">
+          <select id="type" name="Interest">
             <option value="">Pick one...</option>
-            <option value="nashville-host">Host at my Nashville location</option>
-            <option value="corporate">Corporate / group event</option>
+            <option value="Host at my Nashville location">Host at my Nashville location</option>
+            <option value="Corporate / group event">Corporate / group event</option>
           </select>
         </div>
         <div class="form-group">
           <label for="message">Tell us about your trip</label>
-          <textarea id="message" name="message" placeholder="The occasion, vibe you're going for, anything we should know..."></textarea>
+          <textarea id="message" name="Message" placeholder="The occasion, vibe you're going for, anything we should know..."></textarea>
         </div>
         <button type="submit" class="btn btn--blue form-submit">Send message</button>
         <p class="form-note">We'll get back to you within 24 hours.</p>
@@ -652,31 +657,18 @@
       const orig = btn.textContent;
       btn.textContent = 'Sending...';
       btn.disabled = true;
-      const data = Object.fromEntries(new FormData(form));
       try {
-        const res = await fetch('/api/contact', {
+        const res = await fetch(form.action, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
         });
         if (res.ok) {
           form.style.display = 'none';
           document.getElementById('formSuccess').classList.add('active');
         } else { throw new Error(); }
       } catch {
-        const subj = encodeURIComponent('Casa Concert Inquiry from ' + (data.firstName || 'Website'));
-        const body = encodeURIComponent(
-          'Name: ' + data.firstName + ' ' + data.lastName +
-          '\nEmail: ' + data.email +
-          '\nPhone: ' + (data.phone || 'N/A') +
-          '\nDates: ' + (data.dates || 'N/A') +
-          '\nGroup Size: ' + (data.groupSize || 'N/A') +
-          '\nInterest: ' + (data.type || 'N/A') +
-          '\n\n' + (data.message || '')
-        );
-        window.location.href = 'mailto:rob@songgame.com?subject=' + subj + '&body=' + body;
-        btn.textContent = orig;
-        btn.disabled = false;
+        form.submit();
       }
     });
   </script>
