@@ -4,6 +4,7 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 const SUBMISSIONS_FILE = path.join(__dirname, 'submissions.json');
+const ADMIN_KEY = process.env.ADMIN_KEY || '';
 
 const mimeTypes = {
   '.html': 'text/html',
@@ -22,6 +23,9 @@ const mimeTypes = {
   '.woff2': 'font/woff2',
 };
 
+const CACHE_LONG = 'public, max-age=86400, immutable';
+const CACHE_SHORT = 'public, max-age=300';
+
 function loadSubmissions() {
   try {
     return JSON.parse(fs.readFileSync(SUBMISSIONS_FILE, 'utf8'));
@@ -38,6 +42,13 @@ function saveSubmission(data) {
 }
 
 const server = http.createServer((req, res) => {
+  // Health check
+  if (req.url === '/health') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ status: 'ok' }));
+    return;
+  }
+
   // API: contact form
   if (req.method === 'POST' && req.url === '/api/contact') {
     let body = '';
@@ -57,8 +68,15 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // API: view submissions (simple admin)
-  if (req.method === 'GET' && req.url === '/api/submissions') {
+  // API: view submissions (requires ADMIN_KEY)
+  if (req.method === 'GET' && req.url.startsWith('/api/submissions')) {
+    const url = new URL(req.url, `http://${req.headers.host}`);
+    const key = url.searchParams.get('key');
+    if (!ADMIN_KEY || key !== ADMIN_KEY) {
+      res.writeHead(403, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Forbidden' }));
+      return;
+    }
     const submissions = loadSubmissions();
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(submissions, null, 2));
@@ -117,7 +135,9 @@ const server = http.createServer((req, res) => {
         res.end('Server Error');
       }
     } else {
-      res.writeHead(200, { 'Content-Type': contentType });
+      const isAsset = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.woff', '.woff2', '.ico'].includes(ext);
+      const cacheControl = isAsset ? CACHE_LONG : CACHE_SHORT;
+      res.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': cacheControl });
       res.end(content);
     }
   });

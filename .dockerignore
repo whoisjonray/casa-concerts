@@ -1,0 +1,10 @@
+node_modules
+.git
+.DS_Store
+*.mp4
+assets/STAYCATION_NASHVILLE_PART*
+assets/screencapture-*
+assets/scraped-content
+assets/branding
+v2
+submissions.json
