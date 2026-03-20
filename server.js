@@ -1,10 +1,13 @@
 const http = require('http');
+const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 const SUBMISSIONS_FILE = path.join(__dirname, 'submissions.json');
 const ADMIN_KEY = process.env.ADMIN_KEY || '';
+const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'whoisjonray@gmail.com';
 
 const mimeTypes = {
   '.html': 'text/html',
@@ -41,6 +44,48 @@ function saveSubmission(data) {
   return submissions.length;
 }
 
+function sendEmail(data) {
+  if (!RESEND_API_KEY) {
+    console.log('[Email] No RESEND_API_KEY set, skipping email');
+    return;
+  }
+  const payload = JSON.stringify({
+    from: 'Casa Concert <onboarding@resend.dev>',
+    to: [NOTIFY_EMAIL],
+    subject: `Casa Concert Inquiry from ${data.firstName} ${data.lastName}`,
+    html: `
+      <h2>New Casa Concert Inquiry</h2>
+      <p><strong>Name:</strong> ${data.firstName} ${data.lastName}</p>
+      <p><strong>Email:</strong> ${data.email}</p>
+      <p><strong>Phone:</strong> ${data.phone || 'N/A'}</p>
+      <p><strong>Preferred Dates:</strong> ${data.dates || 'N/A'}</p>
+      <p><strong>Group Size:</strong> ${data.groupSize || 'N/A'}</p>
+      <p><strong>Interest:</strong> ${data.type || 'N/A'}</p>
+      <p><strong>Message:</strong></p>
+      <p>${(data.message || 'N/A').replace(/\n/g, '<br>')}</p>
+      <hr>
+      <p style="color:#888;font-size:12px">Submitted via casaconcerts.com at ${new Date().toISOString()}</p>
+    `
+  });
+  const req = https.request({
+    hostname: 'api.resend.com',
+    path: '/emails',
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+      'Content-Length': Buffer.byteLength(payload),
+    }
+  }, (res) => {
+    let body = '';
+    res.on('data', c => body += c);
+    res.on('end', () => console.log(`[Email] ${res.statusCode} ${body}`));
+  });
+  req.on('error', (err) => console.error('[Email] Error:', err.message));
+  req.write(payload);
+  req.end();
+}
+
 const server = http.createServer((req, res) => {
   // Health check
   if (req.url === '/health') {
@@ -58,6 +103,7 @@ const server = http.createServer((req, res) => {
         const data = JSON.parse(body);
         const count = saveSubmission(data);
         console.log(`[Contact #${count}] ${data.firstName} ${data.lastName} <${data.email}>`);
+        sendEmail(data);
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ ok: true }));
       } catch (err) {
